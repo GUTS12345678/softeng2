@@ -270,12 +270,6 @@ $courses = $conn->query("SELECT course_id, course_name FROM courses");
         </div>
     </div>
 
-    <?php
-    // Reset the result pointer for sections and courses
-    $sections->data_seek(0);
-    $courses->data_seek(0);
-    ?>
-
     <!-- Edit Student Modal -->
     <div class="modal fade" id="editStudentModal" tabindex="-1" aria-labelledby="editStudentModalLabel" aria-hidden="true">
         <div class="modal-dialog">

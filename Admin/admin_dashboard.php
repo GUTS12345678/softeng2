@@ -21,11 +21,11 @@ $total_rooms = $conn->query("SELECT COUNT(*) AS total FROM rooms")->fetch_assoc(
 $total_sections = $conn->query("SELECT COUNT(*) AS total FROM sections")->fetch_assoc()['total'] ?? 0;
 
 // Fetch recent students
-$recent_students = $conn->query("SELECT s.student_name, sec.section_name, sec.year_level, c.course_name 
-                                 FROM students s
-                                 JOIN sections sec ON s.section_id = sec.section_id
-                                 JOIN courses c ON sec.course_id = c.course_id
-                                 ORDER BY s.student_id DESC LIMIT 5");
+$recent_students = $conn->query("SELECT student_name, section_name, year_level, course_name 
+                                 FROM students 
+                                 JOIN sections ON students.section_id = sections.section_id 
+                                 JOIN courses ON sections.course_id = courses.course_id 
+                                 ORDER BY student_id DESC LIMIT 2");
 $recent_students = $recent_students ? $recent_students->fetch_all(MYSQLI_ASSOC) : [];
 
 // Fetch recent faculty
@@ -243,7 +243,7 @@ $recent_sections = $recent_sections ? $recent_sections->fetch_all(MYSQLI_ASSOC) 
                                     Year: <?php echo $section['year_level']; ?>
                                 </li>
                             <?php endforeach; ?>
-                        </ul>    
+                        </ul>
                     </div>
                 </div>
             </div>
