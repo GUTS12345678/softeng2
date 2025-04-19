@@ -280,7 +280,7 @@
     <?php endif; ?>
 
     <script>
-        let totalSeconds = 10;
+        let totalSeconds = 300;
         const alarm = new Audio('alertsound.mp3');
         const morealarm = new Audio('alarmingsound.mp3');
         const erroralarm = new Audio('errorsound.mp3');
